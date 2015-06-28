@@ -1,0 +1,48 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>BLog List</h1>
+                    <hr class="small"> </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+            <alert ng-controller='GetMessageCtrl' ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+            <div class="post-preview" ng-repeat="blog in blogs |startFrom:(currentPage - 1) * pageSize | limitTo: pageSize">
+                <a ng-href="#/blog-view/{{ blog._id }}">
+                    <h3 class="post-title"> {{ blog.title }} </h3> </a>
+                <div ta-bind ng-model="blog.content | limitTo: numLimit"></div>
+                <p style="font-size: 16px; font-weight: bolder;">
+                    Created on: 
+                    <span style="color: red;">{{blog.date  | date:' hh:mm '}}</span>, 
+                    <span style="color: red;">{{blog.date  | date:' dd-MMM-yyyy'}}</span>
+                </p>
+                <!-- <pre>{{ blog.content }}</pre>  -->
+                <!--  <pre class="post-subtitle" > {{ blog.content  | limitTo:numLimit }} </pre>  -->
+                <br>
+                <h5 class="post-meta"> 
+                    Tags: <span style="font-size: 16px; font-weight: 200;"> {{ blog.tags }} </span>  
+                    <a ng-href="#/blog-view/{{ blog._id }}" class="btn btn-primary btn-sm" style="float:right">Read more </a> 
+                </h5>
+                <hr> 
+            </div>
+            <!-- Pager -->
+            <pagination style="float:right" total-items="blogs.length" ng-model="currentPage" items-per-page="pageSize"></pagination>
+            <!-- <hr/>
+   <ul class="pager">
+    <li class="next"> 
+    <a href="#">Older Posts &rarr;
+    </a>
+ -->
+        </div>
+    </div>
+</div>
+<hr>

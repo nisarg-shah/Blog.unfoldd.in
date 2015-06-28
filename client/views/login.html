@@ -1,0 +1,40 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Login</h1>
+                    <hr class="small"> <span class="subheading"> Enter your login details below </span> </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" ng-controller="GetMessageCtrl">
+            <div class="row">
+                <div class="col-md-8 col-lg-offset-2">
+                    <br>
+                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+                    <form role="form" name="userForm">
+                        <div class="form-group" ng-class="{ 'has-error': userForm.emailAddress.$touched && userForm.emailAddress.$invalid, 'has-success': userForm.emailAddress.$touched && userForm.emailAddress.$valid }">
+                            <label for="emailAddress">Email</label>
+                            <input type="email" name="emailAddress" class="form-control" ng-model="user.email" id="emailAddress" placeholder="Enter Email address" required>
+                            <div ng-if="userForm.emailAddress.$touched">
+								<div ng-messages="userForm.emailAddress.$error" ng-messages-include="views/includes/error-messages.html">
+								</div>
+							</div>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error': userForm.password.$touched && userForm.password.$invalid, 'has-success': userForm.password.$touched && userForm.password.$valid }">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" id="password" ng-model="user.password" placeholder="Password" required> 
+                            <div ng-if="userForm.password.$touched">
+	                            <div ng-messages="userForm.password.$error" ng-messages-include="views/includes/error-messages.html">
+								</div>
+						    </div>
+                        </div>
+                        <button type="submit" class="btn" ng-class="{'btn-default': userForm.$invalid, 'btn-info': userForm.$valid}"  ng-click="login()" ng-disabled="userForm.$invalid">LogIn</button> <a class="btn btn-primary" href="#/signup">Click here to Signup</a> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,66 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>View Blog</h1> </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container" ng-controller='GetMessageCtrl'>
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+            <br>
+            <div class="post-preview">
+                <h3>{{ blog.title }}</h3>
+                <div ta-bind ng-model="blog.content"></div>
+                <!-- <pre>{{ blog.content }}</pre>  -->
+                <p style="font-size: 16px; font-weight: bolder;">
+                    Created on: 
+                    <span style="color: red;">{{blog.date  | date:' hh:mm '}}</span>, 
+                    <span style="color: red;">{{blog.date  | date:' dd-MMM-yyyy'}}</span>
+                </p><br>
+                <h4 class="post-meta"> 
+                    Tags:<span style="font-size: 16px; font-weight: 200;"> {{ blog.tags }} </span>                    
+                </h4>
+        	
+            </div>	           
+                <hr/>
+                <h4>Comments</h4>
+             <div ng-controller="GetCommentsCtrl">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+                <div ng-repeat="GEtcomment in commentsGet" >
+                	<div ng-if="GEtcomment.status == '1'" class='bs-callout bs-callout-primary'>
+                    	<p style="float:right; color: black; font-size: 14px;">
+                			Comented on: 
+                			<span style="color: red;">{{GEtcomment.date  | date:' hh:mm '}}</span>, 
+                			<span style="color: red;">{{GEtcomment.date  | date:' dd-MMM-yyyy'}}</span>
+                		</p>
+                    	<pre>{{GEtcomment.content}} </pre>
+                	</div>
+                </div>
+
+                <hr/>
+                <h4>Add a Comment</h4>
+
+               <form role="form" name="comment">
+                    <div class="form-group" ng-class="{ 'has-error': comment.comments.$touched && comment.comments.$invalid, 'has-success': comment.comments.$touched && comment.comments.$valid }">
+                        
+                        <textarea rows='6' name="comments" style="width: 100%" class="form-control" ng-model="commentsContent.content" id="comments" required> </textarea>
+                        <div ng-if="comment.comments.$touched">
+            				<div ng-messages="comment.comments.$error" ng-messages-include="views/includes/error-messages.html">
+            				</div>
+            			</div>
+                    </div>
+                    <button type="submit" class="btn " ng-class="{'btn-default': comment.$invalid, 'btn-success': comment.$valid}" ng-click="addComments()" ng-disabled="comment.$invalid">Submit</button> 
+                </form>
+                
+            <br/> 
+            </div>
+        </div>
+    </div>
+</div>

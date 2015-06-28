@@ -1,0 +1,38 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>View/Edit Blog</h1> </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+            <br>
+            <div class="post-preview">
+                <ng-include src="'views/blog-nav.html'"></ng-include>
+                <form role="form" name="blogEdit">
+                    <div class="form-group" ng-class="{ 'has-error': blogEdit.title.$touched && blogEdit.title.$invalid, 'has-success': blogEdit.title.$touched && blogEdit.title.$valid }">
+                        <label for="title" class="control-label">Title</label>
+                        <input type="text" name="title" maxlength="50" ng-model="blog.title" class="form-control" id="title" placeholder="Enter the blog title" required > 
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error': blogEdit.content.$touched && blogEdit.content.$invalid, 'has-success': blogEdit.content.$touched && blogEdit.content.$valid }">
+                        <label for="content" class="control-label">Content</label>
+                        <text-angular name="content" ng-model="blog.content"></text-angular>
+                        <textarea  name="content" ng-model="blog.content" style="width: 100%" hidden id="content" required></textarea>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error': blogEdit.tag.$touched && blogEdit.tag.$invalid, 'has-success': blogEdit.tag.$touched && blogEdit.tag.$valid }">
+                        <label for="tags" class="control-label">Tags</label>
+                        <input type="text" name="tag" ng-model="blog.tags" class="form-control" placeholder="Enter tags for the blog." id="tags" required> 
+                    </div>
+                    <input type="submit" class="btn" ng-class="{'btn-default': blogEdit.$invalid, 'btn-success': blogEdit.$valid}" ng-click="saveBlog()" ng-disabled="blogEdit.$invalid" value="Save"> </form>
+                <br> </div>
+        </div>
+    </div>
+</div>

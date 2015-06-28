@@ -1,0 +1,30 @@
+.dialog-header-warning {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.dialog-header-error {
+    background-color: #d2322d;
+}
+
+.dialog-header-wait {
+    background-color: #428bca;
+}
+
+.dialog-header-notify {
+    background-color: #eee;
+}
+
+.dialog-header-confirm {
+    background-color: #333;
+}
+
+.dialog-header-warning h4,
+.dialog-header-warning span,
+.dialog-header-confirm h4,
+.dialog-header-confirm span,
+.dialog-header-error h4,
+.dialog-header-error span,
+.dialog-header-wait h4,
+.dialog-header-wait span {
+    color: #fff
+}

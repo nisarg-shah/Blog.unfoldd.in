@@ -1,0 +1,30 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Delete Blog</h1> </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <br>
+            <div class="post-preview">
+                <form role="form">
+                    <p>Are you sure you wish to delete the Blog {{ Blog.title }}?</p>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-danger" ng-click="deleteBlog()" value="Yes">
+                        <button ng-click="back()" type="button" class="btn btn-default">No</button>
+                    </div>
+                </form>
+            </div>
+            <br> 
+        </div>
+    </div>
+</div>

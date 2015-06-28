@@ -1,0 +1,70 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>View/Edit Blog</h1> </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container" ng-controller='GetMessageCtrl'>
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" >
+            <br>
+            <alert  ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+
+            <div class="post-preview">
+                <ng-include src="'views/blog-nav.html'"></ng-include>
+                <h3>{{ blog.title }}</h3>
+                <div ta-bind ng-model="blog.content"></div>
+                <!-- <pre>{{ blog.content }}</pre>  -->
+                <p style="font-size: 16px; font-weight: bolder;">
+                    Created on: 
+                    <span style="color: red;">{{blog.date  | date:' hh:mm '}}</span>, 
+                    <span style="color: red;">{{blog.date  | date:' dd-MMM-yyyy'}}</span>
+                </p>
+                <br>
+                <h4 class="post-meta"> 
+                    Tags:<span style="font-size: 16px; font-weight: 200;"> {{ blog.tags }} </span>                    
+                </h4>
+            </div>
+            <hr/>
+            <h4>Comments</h4>
+            <div ng-controller="GetCommentsCtrl">
+            	<form role="form">
+		            <div class="row" ng-repeat="GEtcomment in commentsGet">
+			            <div class="col-md-10">		                	
+	                		<div ng-class="{'bs-callout bs-callout-danger': GEtcomment.status == '0', 'bs-callout bs-callout-primary' :  GEtcomment.status == '1'}">
+	                		<p style="float:right; color: black; font-size: 14px;">
+	                			Comented on: 
+	                			<span style="color: red;">{{GEtcomment.date  | date:' hh:mm '}}</span>, 
+	                			<span style="color: red;">{{GEtcomment.date  | date:' dd-MMM-yyyy'}}</span>
+	                		</p>
+	                			<pre>{{GEtcomment.content}} </pre>
+
+                			</div>		                	
+				        </div>
+				        <div class="col-md-2">			                
+				        	<p>
+			                    <div class="button-group">
+                                    <button ng-if="GEtcomment.status == '0'" type="submit" ng-click="launchUnBlockComment(GEtcomment)"  class="btn btn-info btn-sm">  <span class="glyphicon glyphicon-ok"></span> 
+                                    </button>
+			                        <button ng-if="GEtcomment.status == '1'" type="submit" ng-click="launchBlockComment(GEtcomment)"  class="btn btn-warning btn-sm"> 	<span class="glyphicon glyphicon-ban-circle"></span> 
+			                        </button>
+			                        <button type="submit" ng-click="launchDeleteComment(GEtcomment)" class="btn btn-danger btn-sm"> 
+			                        	<span class="glyphicon glyphicon-trash"></span> 
+			                        </button>
+			                    </div>
+			                </p>
+			            </div>
+				    </div> 
+			    </form> 
+			</div>  
+            <br> 
+        </div>
+    </div>
+</div>

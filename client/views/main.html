@@ -1,0 +1,82 @@
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12"> <img class="img-responsive" src="images/yomahn.png" alt="">
+                <div class="intro-text"> <span class="name">Let's start Blogging.</span>
+                    <hr class="star-light"> <span class="skills">This is a demo Blogging system implemnted using M.E.A.N stack. Many features to be added in days to come.</span> </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Portfolio Grid Section -->
+<section id="portfolio">
+    <div class="container" ng-controller="BlogCtrl">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Blog List</h2>
+                <hr class="star-primary"> </div>
+        </div>
+        <div class="row">
+        	<div ng-repeat="blog in blogs |startFrom:(1 - 1) * recentPostPageSize | limitTo: recentPostPageSize">
+	            <div class="col-sm-6 col-md-4">
+   					<div class="thumbnail">
+   						<div class="caption">
+        					<h4>	
+	                			<a ng-href="#/blog-view/{{ blog._id }}" class="portfolio-link" data-toggle="modal"> {{blog.title}} </a>
+	                		</h4>
+	                		<p  style="font-size: 16px;">{{blog.content | htmlToPlaintext | limitTo: recentPostTextLimit}}</p>
+	                		<p style="font-size: 14px;">
+	                			Created on: 
+	                			<span style="color: red;">{{blog.date  | date:' hh:mm '}}</span>, 
+	                			<span style="color: red;">{{blog.date  | date:' dd-MMM-yyyy'}}</span>
+	                		</p>
+                		</div>
+	            	</div>
+            	</div>
+            </div>
+        </div>
+         <div class="row">
+        	<div ng-repeat="blog in blogs |startFrom:(2 - 1) * recentPostPageSize | limitTo: recentPostPageSize">
+	            <div class="col-sm-6 col-md-4">
+   					<div class="thumbnail">
+   						<div class="caption">
+        					<h4>	
+	                			<a ng-href="#/blog-view/{{ blog._id }}" class="portfolio-link" data-toggle="modal"> {{blog.title}} </a>
+	                		</h4>
+	                		<p  style="font-size: 16px;">{{blog.content | htmlToPlaintext | limitTo: recentPostTextLimit}}</p>
+	                		<p style="font-size: 14px;">
+	                			Created on: 
+	                			<span style="color: red;">{{blog.date  | date:' hh:mm '}}</span>, 
+	                			<span style="color: red;">{{blog.date  | date:' dd-MMM-yyyy'}}</span>
+	                		</p>
+                		</div>
+	            	</div>
+            	</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="success" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>About</h2>
+                <hr class="star-light"> </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-2">
+                <p> Unfoldd is a independent digital company, established in Dahanu India. </p>
+                <p> Aware of the overwhelming amount of information surrounding us, we aim to speak a clean, clear and meaningful message. </p>
+            </div>
+            <div class="col-lg-4">
+                <p> In the intersection of technology and design we develop useful, compelling and engaging interactive experiences across all digital platforms. We work on a large variety of projects including applications, sites, games, digital installations and campaigns. </p>
+            </div>
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <a ng-href="#/blog" class="btn btn-lg btn-outline"> <i class="fa fa-list"></i> Blog's </a>
+            </div>
+        </div>
+    </div>
+</section>

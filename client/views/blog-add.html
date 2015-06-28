@@ -1,0 +1,51 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Create Blog</h1> </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+            <br>
+            <div class="post-preview">
+                <form role="form" name="blogAdd">
+                    <div class="form-group" ng-class="{ 'has-error': blogAdd.title.$touched && blogAdd.title.$invalid, 'has-success': blogAdd.title.$touched && blogAdd.title.$valid }">
+                        <label for="title" class="control-label">Title</label>
+                        <input type="text" name="title" maxlength="50" ng-model="blog.title" class="form-control" id="title" placeholder="Enter blog title" required> 
+                        <div ng-if="blogAdd.title.$touched">
+                            <div ng-messages="blogAdd.title.$error" ng-messages-include="views/includes/error-messages.html">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error': blogAdd.content.$touched && blogAdd.content.$invalid, 'has-success': blogAdd.content.$touched && blogAdd.content.$valid }">
+                        <label for="content" class="control-label">Content</label>
+                        <text-angular ng-model="blog.content"></text-angular>
+                        <textarea ng-model="blog.content" style="width: 100%" hidden id="content" required></textarea>
+                        <div ng-if="blogAdd.content.$touched">
+                            <div ng-messages="blogAdd.content.$error" ng-messages-include="views/includes/error-messages.html">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error': blogAdd.tag.$touched && blogAdd.tag.$invalid, 'has-success': blogAdd.tag.$touched && blogAdd.tag.$valid }">
+                        <label for="tags" class="control-label">Tags</label>
+                        <input type="text" name="tag" ng-model="blog.tags" class="form-control" id="tags" placeholder="Enter tags for the blog." required> 
+                        <div ng-if="blogAdd.tag.$touched">
+                            <div ng-messages="blogAdd.tag.$error" ng-messages-include="views/includes/error-messages.html">
+                            </div>
+                        </div>
+                    </div>
+                    <a ng-href="#/create-blog" class="btn btn-danger"> Cancel </a>
+                    <input type="submit" class="btn" ng-class="{'btn-default': blogAdd.$invalid, 'btn-success': blogAdd.$valid}" ng-disabled="blogAdd.$invalid" ng-click="saveBlog()" value="Save"> </form>
+            </div>
+            <br> 
+        </div>
+    </div>
+</div>
